@@ -1,0 +1,37 @@
+*{
+    font-family:'Times New Roman', Times, serif;
+    
+}
+.scores{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+
+}
+.timer{
+    position: absolute;
+    top:10px;
+    right:10px;
+}
+.hide{
+   display:none;
+}
+main{
+    margin: 100px auto 0 auto;
+    max-width:600px;
+    height: 400px;
+    border: solid 10px black;
+    border-radius: 5px ;
+}
+#start{
+    text-align: center;
+    height:350px;
+    
+}
+#start button{
+    position: relative;
+    bottom: 10px;
+}
+#endScreen{
+    text-align: center;
+}
