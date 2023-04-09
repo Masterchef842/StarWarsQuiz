@@ -1,3 +1,5 @@
+//Selectors
+
 let startButton=document.querySelector("#startButton");
 let startPage=document.querySelector("#start");
 let questionPage=document.querySelector("#question");
@@ -13,6 +15,7 @@ let ansA;
 let ansB;
 let ansC;
 let ansD;
+let ansButton
 let answers=[
 ["test (correct)","test","test","test"],
 ["test","test (correct)","test","test"],
@@ -27,8 +30,33 @@ function startQuiz(){
 
 }
 function createAnswerChoice(){
-    ansA=document.createElement("button")
-    ansA.textContent()
+    //let ansTxtStorage;
+    ansA=document.createElement("button");
+    ansB=document.createElement("button");
+    ansC=document.createElement("button");
+    ansD=document.createElement("button");
+
+    ansA.setAttribute("class","answerChoice");
+    ansB.setAttribute("class","answerChoice");
+    ansC.setAttribute("class","answerChoice");
+    ansD.setAttribute("class","answerChoice");
+
+    ansA.textContent=answers[questionNumber][0];
+    ansB.textContent=answers[questionNumber][1];
+    ansC.textContent=answers[questionNumber][2];
+    ansD.textContent=answers[questionNumber][3];
+
+    ansButton=document.querySelectorAll(".answerChoice");
+    
+    // if(answers[questionNumber][0].includes("(correct)")){
+    //     ansTxtStorage = answers[questionNumber][0].split(' ');
+    //     ansA.textContent=ansTxtStorage[0];
+    //     ansA.setAttribute("correct","true");
+    // }
+    // else{
+    //     ansA.textContent=answers[questionNumber][0];
+    // }
+
 
 }
 function displayQuestion(){
@@ -40,7 +68,12 @@ function displayQuestion(){
     answersDiv.appendChild(ansC);
     answersDiv.appendChild(ansD);
     
+    questionNumber++;
 
+    console.log(ansButton);
+
+    // ansButton.addEventListener("click",onChooseAnswer);
+    
 
     
 
@@ -53,6 +86,16 @@ function displayQuestion(){
     //check if last question
     //if so go to endPage
     // if not increment questionNumber and displayQuestion
+}
+function onChooseAnswer(){
+    console.log("test");
+    if (questionNumber<questions.length){
+        displayQuestion();
+    }
+    else{
+        questionPage.setAttribute("class","hide");
+        endPage.setAttribute("class","onScreen");
+    }
 }
 //timer
 
