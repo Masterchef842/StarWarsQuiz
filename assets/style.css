@@ -1,7 +1,10 @@
 *{
     font-family:'Times New Roman', Times, serif;
     color: yellow;
-    background-color: black;
+    
+}
+body{
+    background-image: url("https://cdn.wallpapersafari.com/38/0/tNfnSd.png");
 }
 .scores{
     position: absolute;
@@ -33,6 +36,8 @@ main{
 #start button{
     position: relative;
     bottom: 10px;
+    background-color: yellow;
+    color: black;
 }
 #question{
     text-align: center;
@@ -53,4 +58,20 @@ main{
 }
 .hs{
     text-align: center;
+    
+}
+li{
+    text-align:center;
+    list-style-position: inside;
+
+}
+#scoreboard{
+    text-align: center;
+}
+button{
+    background-color: yellow;
+    color: black;
+}
+#initials{
+    color:black;
 }

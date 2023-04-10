@@ -15,18 +15,22 @@ let timerInterval;
 //Q's & A's
 
 let questionNumber=0;
-let questions =["test1?","test2?","test3?","test4?","test5?"];
+let questions =["In 'The Empire Strikes back', what planet did Jedi Master Yoda reside on?",
+"Which limb did Luke Skywalker have severed by his father Darth Vader?",
+"What was the name of The Emperors own Sith master?",
+"Who was the leader of the 501st leigon of clone troopers underneath Anakin Skywalker",
+"What was the name of the blue, elephant-like creature playing music in Jabbas Palace in 'Return of the Jedi"];
 let ansA;
 let ansB;
 let ansC;
 let ansD;
 let ansButton
 let answers=[
-["test (correct)","test","test","test"],
-["test","test (correct)","test","test"],
-["test","test","test (correct)","test"],
-["test","test","test","test (correct)"],
-["test (correct)","test","test","test"]];
+["Dagobah  (correct)","Bespin","Stujon","Tatooine"],
+["left hand","right hand  (correct)","left foot","right foot"],
+["Darth Tyranus","Darth Talon","Darth Plagius  (correct)","Darth Bane"],
+["Commander Cody","Commander Bly","Commander Wolfe","Captain Rex  (correct)"],
+["Max Rebo  (correct)","Bossk","Aayla Secura","Din Djarin"]];
 
 function startQuiz(){
     startPage.setAttribute("class","hide");
@@ -47,6 +51,12 @@ function createAnswerChoice(){
     ansC.setAttribute("class","answerChoice");
     ansD.setAttribute("class","answerChoice");
 
+    ansA.setAttribute("style","background-color:Green");
+    ansB.setAttribute("style","background-color:Red");
+    ansC.setAttribute("style","background-color:Blue");
+    ansD.setAttribute("style","background-color:Purple");
+
+
     ansA.textContent=answers[questionNumber][0];
     ansB.textContent=answers[questionNumber][1];
     ansC.textContent=answers[questionNumber][2];
@@ -63,7 +73,7 @@ function isSetCorrect(ans){
     let ansTxtStorage;
 
     if(ans.textContent.includes("(correct)")){
-        ansTxtStorage = ans.textContent.split(' ');
+        ansTxtStorage = ans.textContent.split('  ');
         ans.textContent=ansTxtStorage[0];
        ans.setAttribute("correct","true");
     }
