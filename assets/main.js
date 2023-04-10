@@ -7,7 +7,11 @@ let endPage=document.querySelector("#endScreen");
 let question=document.querySelector("#questionTitle");
 let answersDiv=document.querySelector("#answers");
 let timer=document.querySelector("#time");
+let finalScore=document.querySelector("#finalScore");
+let userName=document.querySelector("#initials");
+let submitScore=document.querySelector("#submit");
 let secondsLeft=60;
+let timerInterval;
 //Q's & A's
 
 let questionNumber=0;
@@ -127,12 +131,18 @@ function removeAllChildNodes(parent) {
 }
 
 function gameOver(){
-
+    clearInterval(timerInterval);
     questionPage.setAttribute("class","hide");
     endPage.setAttribute("class","onScreen");
+    finalScore.textContent=secondsLeft;
+    submitScore.addEventListener("click",function(){
+        localStorage.setItem(userName.value,secondsLeft);
+        window.location.href="./highScores.html";
+    })
+    
 }
 function setTime(){
-    let timerInterval=setInterval(function(){
+    timerInterval=setInterval(function(){
         secondsLeft--;
         timer.textContent=secondsLeft;
         if(secondsLeft<=0){
@@ -167,11 +177,5 @@ startButton.addEventListener("click",startQuiz);
 
 
 // GIVEN I am taking a code quiz
-// WHEN I click the start button
-// !THEN a timer starts and I am presented with a question
-// WHEN I answer a question incorrectly
-// !THEN time is subtracted from the clock
-// WHEN all questions are answered or the timer reaches 0
-// !THEN the game is over
 // WHEN the game is over
 // !THEN I can save my initials and my score
