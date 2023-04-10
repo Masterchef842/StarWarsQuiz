@@ -6,7 +6,6 @@ let questionPage=document.querySelector("#question");
 let endPage=document.querySelector("#endScreen");
 let question=document.querySelector("#questionTitle");
 let answersDiv=document.querySelector("#answers");
-
 //Q's & A's
 
 let questionNumber=0;
@@ -30,7 +29,7 @@ function startQuiz(){
 
 }
 function createAnswerChoice(){
-    //let ansTxtStorage;
+    
     ansA=document.createElement("button");
     ansB=document.createElement("button");
     ansC=document.createElement("button");
@@ -46,55 +45,82 @@ function createAnswerChoice(){
     ansC.textContent=answers[questionNumber][2];
     ansD.textContent=answers[questionNumber][3];
 
-    ansButton=document.querySelectorAll(".answerChoice");
-    
-    // if(answers[questionNumber][0].includes("(correct)")){
-    //     ansTxtStorage = answers[questionNumber][0].split(' ');
-    //     ansA.textContent=ansTxtStorage[0];
-    //     ansA.setAttribute("correct","true");
-    // }
-    // else{
-    //     ansA.textContent=answers[questionNumber][0];
-    // }
+    isSetCorrect(ansA);
+    isSetCorrect(ansB);
+    isSetCorrect(ansC);
+    isSetCorrect(ansD);
 
+}
+
+function isSetCorrect(ans){
+    let ansTxtStorage;
+
+    if(ans.textContent.includes("(correct)")){
+        ansTxtStorage = ans.textContent.split(' ');
+        ans.textContent=ansTxtStorage[0];
+       ans.setAttribute("correct","true");
+    }
 
 }
 function displayQuestion(){
     //update questions and answers
+    removeAllChildNodes(answersDiv);
     question.textContent=questions[questionNumber];
     createAnswerChoice()
     answersDiv.appendChild(ansA);
     answersDiv.appendChild(ansB);
     answersDiv.appendChild(ansC);
     answersDiv.appendChild(ansD);
+
+    ansButton=document.querySelectorAll(".answerChoice");
     
     questionNumber++;
 
-    console.log(ansButton);
-
-    // ansButton.addEventListener("click",onChooseAnswer);
-    
-
+    for(let i=0; i<ansButton.length;i++)
+    {
+        ansButton[i].addEventListener("click",onChooseAnswer);
+    }
     
 
     //eventlistener
     //check if answer is correct
     // timer
-
-
-
-    //check if last question
-    //if so go to endPage
-    // if not increment questionNumber and displayQuestion
 }
-function onChooseAnswer(){
-    console.log("test");
+function correctOrIncorrect(event){
+    let verdict=document.createElement("h2");
+    verdict.setAttribute("id","verdict");
+    if(event.currentTarget.getAttribute("correct")==="true"){
+        verdict.textContent="CORRECT"
+    }  
+    else
+        verdict.textContent="INCORRECT"
+
+    answersDiv.appendChild(verdict);
+    
+    
+
+
+}
+
+function onChooseAnswer(event){
     if (questionNumber<questions.length){
-        displayQuestion();
+        removeAllChildNodes(answersDiv);
+        correctOrIncorrect(event);
+        setTimeout(displayQuestion,1000);
+        
     }
     else{
+        removeAllChildNodes(answersDiv);
+        correctOrIncorrect(event);
         questionPage.setAttribute("class","hide");
         endPage.setAttribute("class","onScreen");
+    }
+}
+
+
+function removeAllChildNodes(parent) {
+    while (parent.firstChild) {
+        parent.removeChild(parent.firstChild);
     }
 }
 //timer

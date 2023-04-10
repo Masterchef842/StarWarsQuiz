@@ -35,8 +35,10 @@ main{
 #answers{
     display: flex;
     justify-content: space-between;
-    max-width: 80px;
     flex-direction: column;
+}
+.answerChoice{
+    margin: 15px;
 }
 #endScreen{
     text-align: center;
