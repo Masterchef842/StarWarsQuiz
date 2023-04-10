@@ -32,6 +32,12 @@ main{
     position: relative;
     bottom: 10px;
 }
+#question{
+    text-align: center;
+}
+#verdict{
+    text-align: center;
+}
 #answers{
     display: flex;
     justify-content: space-between;
