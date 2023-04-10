@@ -136,7 +136,13 @@ function gameOver(){
     endPage.setAttribute("class","onScreen");
     finalScore.textContent=secondsLeft;
     submitScore.addEventListener("click",function(){
-        localStorage.setItem(userName.value,secondsLeft);
+        let allScores = JSON.parse(localStorage.getItem("highscores")) || [];
+        let userObject = {
+            userName: userName.value,
+            score: secondsLeft
+        }
+        allScores.push(userObject);
+        localStorage.setItem("highscores", JSON.stringify(allScores))
         window.location.href="./highScores.html";
     })
     
@@ -160,7 +166,6 @@ function runOutOfTime(){
     answersDiv.appendChild(timesUp);
     setTimeout(gameOver,1500);
 }
-//timer
 
 
 

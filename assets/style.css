@@ -1,6 +1,7 @@
 *{
     font-family:'Times New Roman', Times, serif;
-    
+    color: yellow;
+    background-color: black;
 }
 .scores{
     position: absolute;
@@ -20,9 +21,10 @@ main{
     margin: 100px auto 0 auto;
     max-width:600px;
     height: 400px;
-    border: solid 10px black;
+    border: solid 10px yellow;
     border-radius: 5px ;
 }
+
 #start{
     text-align: center;
     height:350px;
@@ -47,5 +49,8 @@ main{
     margin: 15px;
 }
 #endScreen{
+    text-align: center;
+}
+.hs{
     text-align: center;
 }
